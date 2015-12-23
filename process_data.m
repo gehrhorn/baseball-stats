@@ -1,9 +1,34 @@
 % startup script to process baseball data
 
 %% Master
+% playerID       A unique code asssigned to each player.  The playerID links
+%                  the data in this file with records in the other files.
+% birthYear      Year player was born
+% birthMonth     Month player was born
+% birthDay       Day player was born
+% birthCountry   Country where player was born
+% birthState     State where player was born
+% birthCity      City where player was born
+% deathYear      Year player died
+% deathMonth     Month player died
+% deathDay       Day player died
+% deathCountry   Country where player died
+% deathState     State where player died
+% deathCity      City where player died
+% nameFirst      Player's first name
+% nameLast       Player's last name
+% nameGiven      Player's given name (typically first and middle)
+% weight         Player's weight in pounds
+% height         Player's height in inches
+% bats           Player's batting hand (left, right, or both)         
+% throws         Player's throwing hand (left or right)
+% debut          Date that player made first major league appearance
+% finalGame      Date that player made first major league appearance (blank if still active)
+% retroID        ID used by retrosheet
+% bbrefID        ID used by Baseball Reference website
 
 source = 'data/Master.csv';
-formatString = {'%q', '%f', '%f', '%f', '%C', '%C', '%C', '%f', ...
+formatString = {'%C', '%f', '%f', '%f', '%C', '%C', '%C', '%f', ...
     '%f', '%f', '%C', '%C', '%C', '%q', '%q', '%q', '%f', '%f', ...
     '%C', '%C', '%D', '%D', '%C', '%C'};
 
@@ -36,7 +61,7 @@ Master = makeTable(source, formatString);
 % GIDP           Grounded into double plays
  
 source = 'data/Batting.csv';
-formatString = {'%q', '%f', '%f', '%C', '%C', '%d', '%d', '%d', '%d', ...
+formatString = {'%C', '%f', '%f', '%C', '%C', '%d', '%d', '%d', '%d', ...
     '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', ...
     '%d', '%d'};
 Batting = makeTable(source, formatString);
@@ -76,7 +101,7 @@ Batting = makeTable(source, formatString);
 % GIDP           Grounded into double plays by opposing batter
 
 source = 'data/Pitching.csv';
-formatString = {'%q', '%d', '%d', '%C', '%C', '%d', '%d','%d','%d', ...
+formatString = {'%C', '%d', '%d', '%C', '%C', '%d', '%d','%d','%d', ...
     '%d','%d','%d','%d','%d','%d','%d','%d','%d', '%f', '%f', '%d', ...
     '%d','%d','%d','%d','%d','%d','%d','%d','%d'};
 Pitching = makeTable(source, formatString);
@@ -104,7 +129,7 @@ Pitching = makeTable(source, formatString);
 % ZR             Zone Rating
 
 source = 'data/Fielding.csv';
-formatString = {'%q', '%d', '%d', '%C', '%C', '%C', '%d', '%d', '%f', ...
+formatString = {'%C', '%d', '%d', '%C', '%C', '%C', '%d', '%d', '%f', ...
     '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%f'};
 Fielding = makeTable(source, formatString);
 
@@ -121,7 +146,7 @@ Fielding = makeTable(source, formatString);
 % startingPos    If player was game starter, the position played
 
 source = 'data/AllstarFull.csv';
-formatString = {'%q', '%d', '%d', '%C', '%C', '%C', '%d', '%C'};
+formatString = {'%C', '%d', '%d', '%C', '%C', '%C', '%d', '%C'};
 AllstarFull = makeTable(source, formatString);
 
 %% Hall of Fame
@@ -138,7 +163,7 @@ AllstarFull = makeTable(source, formatString);
 % needed_note    Explanation of qualifiers for special elections
 
 source = 'data/HallOfFame.csv';
-formatString = {'%q', '%d', '%C', '%d', '%d', '%d', '%C', '%C', '%C'};
+formatString = {'%C', '%d', '%C', '%d', '%d', '%d', '%C', '%C', '%C'};
 HallOfFame = makeTable(source, formatString);
 
 %% Managers
@@ -159,7 +184,7 @@ HallOfFame = makeTable(source, formatString);
 % plyrMgr        Player Manager (denoted by 'Y')
 
 source = 'data/Managers.csv';
-formatString = {'%q', '%d', '%C', '%C', '%d', '%d', '%d', '%d', '%d', '%C'};
+formatString = {'%C', '%d', '%C', '%C', '%d', '%d', '%d', '%d', '%d', '%C'};
 Managers = makeTable(source, formatString);
 
 %% Teams
@@ -290,7 +315,7 @@ BattingPost = makeTable(source, formatString);
 % GIDP           Grounded into Double Plays
 
 source = 'data/PitchingPost.csv';
-formatString = {'%q', '%d', '%C', '%C', '%C', '%d', '%d', '%d', '%d', ...
+formatString = {'%C', '%d', '%C', '%C', '%C', '%d', '%d', '%d', '%d', ...
     '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%f', '%f', ...
     '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'};
 PitchingPost = makeTable(source, formatString);
@@ -319,7 +344,7 @@ TeamsFranchises = makeTable(source, formatString);
 % Grf            Games played in right field
 
 source = 'data/FieldingOF.csv';
-formatString = {'%q', '%d', '%d', '%d', '%d', '%d'};
+formatString = {'%C', '%d', '%d', '%d', '%d', '%d'};
 FieldingOF = makeTable(source, formatString);
 
 
@@ -340,7 +365,7 @@ FieldingOF = makeTable(source, formatString);
 % rank           Team's position in standings for the half
 
 source = 'data/ManagersHalf.csv';
-formatString = {'%q', '%d', '%C', '%C', '%d', '%d', '%d', '%d', '%d', '%d'};
+formatString = {'%C', '%d', '%C', '%C', '%d', '%d', '%d', '%d', '%d', '%d'};
 ManagersHalf = makeTable(source, formatString);
 
 %% TeamsHalf
@@ -407,7 +432,7 @@ SeriesPost = makeTable(source, formatString);
 % notes          Notes about the award
 
 source = 'data/AwardsManagers.csv';
-formatString = {'%q', '%C', '%d', '%C', '%C', '%C'};
+formatString = {'%C', '%C', '%d', '%C', '%C', '%C'};
 AwardsManagers = makeTable(source, formatString);
 
 %% AwardsPlayers
@@ -422,7 +447,7 @@ AwardsManagers = makeTable(source, formatString);
 % notes          Notes about the award
 
 source = 'data/AwardsPlayers.csv';
-formatString = {'%q', '%C', '%d', '%C', '%C', '%C'};
+formatString = {'%C', '%C', '%d', '%C', '%C', '%C'};
 AwardsPlayers = makeTable(source, formatString);
 
 %% AwardsShareManagers
