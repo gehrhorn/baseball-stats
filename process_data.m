@@ -562,3 +562,4 @@ source = 'data/CollegePlaying.csv';
 formatString = {'%C', '%C', '%d'};
 CollegePlaying = makeTable(source, formatString);
 
+save(stats.mat);
