@@ -562,4 +562,16 @@ source = 'data/CollegePlaying.csv';
 formatString = {'%C', '%C', '%d'};
 CollegePlaying = makeTable(source, formatString);
 
+
+
+
+%% Fangraphs wOBA and FIP data
+
+source = 'data/FanGraphs/FanGraphs wOBA and FIP Constants.csv';
+formatString = {'%d', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', ...
+    '%f', '%f', '%f', '%f', '%f'};
+wOBAandFIP = makeTable(source, formatString);
+
+
+%% Save data
 save(stats.mat);
