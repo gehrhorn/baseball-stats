@@ -27,7 +27,7 @@
 % retroID        ID used by retrosheet
 % bbrefID        ID used by Baseball Reference website
 
-source = 'data/Master.csv';
+source = 'data/lahman/Master.csv';
 formatString = {'%C', '%f', '%f', '%f', '%C', '%C', '%C', '%f', ...
     '%f', '%f', '%C', '%C', '%C', '%q', '%q', '%q', '%f', '%f', ...
     '%C', '%C', '%D', '%D', '%C', '%C'};
@@ -60,7 +60,7 @@ Master = makeTable(source, formatString);
 % SF             Sacrifice flies
 % GIDP           Grounded into double plays
  
-source = 'data/Batting.csv';
+source = 'data/lahman/Batting.csv';
 formatString = {'%C', '%f', '%f', '%C', '%C', '%d', '%d', '%d', '%d', ...
     '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', ...
     '%d', '%d'};
@@ -100,7 +100,7 @@ Batting = makeTable(source, formatString);
 % SF             Sacrifice flies by opposing batters
 % GIDP           Grounded into double plays by opposing batter
 
-source = 'data/Pitching.csv';
+source = 'data/lahman/Pitching.csv';
 formatString = {'%C', '%d', '%d', '%C', '%C', '%d', '%d','%d','%d', ...
     '%d','%d','%d','%d','%d','%d','%d','%d','%d', '%f', '%f', '%d', ...
     '%d','%d','%d','%d','%d','%d','%d','%d','%d'};
@@ -128,7 +128,7 @@ Pitching = makeTable(source, formatString);
 % CS             Opponents Caught Stealing (by catchers)
 % ZR             Zone Rating
 
-source = 'data/Fielding.csv';
+source = 'data/lahman/Fielding.csv';
 formatString = {'%C', '%d', '%d', '%C', '%C', '%C', '%d', '%d', '%f', ...
     '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%f'};
 Fielding = makeTable(source, formatString);
@@ -145,7 +145,7 @@ Fielding = makeTable(source, formatString);
 % GP             1 if Played in the game
 % startingPos    If player was game starter, the position played
 
-source = 'data/AllstarFull.csv';
+source = 'data/lahman/AllstarFull.csv';
 formatString = {'%C', '%d', '%d', '%C', '%C', '%C', '%d', '%C'};
 AllstarFull = makeTable(source, formatString);
 
@@ -162,7 +162,7 @@ AllstarFull = makeTable(source, formatString);
 % category       Category in which candidate was honored
 % needed_note    Explanation of qualifiers for special elections
 
-source = 'data/HallOfFame.csv';
+source = 'data/lahman/HallOfFame.csv';
 formatString = {'%C', '%d', '%C', '%d', '%d', '%d', '%C', '%C', '%C'};
 HallOfFame = makeTable(source, formatString);
 
@@ -183,7 +183,7 @@ HallOfFame = makeTable(source, formatString);
 % rank           Team's final position in standings that year
 % plyrMgr        Player Manager (denoted by 'Y')
 
-source = 'data/Managers.csv';
+source = 'data/lahman/Managers.csv';
 formatString = {'%C', '%d', '%C', '%C', '%d', '%d', '%d', '%d', '%d', '%C'};
 Managers = makeTable(source, formatString);
 
@@ -239,7 +239,7 @@ Managers = makeTable(source, formatString);
 % teamIDlahman45 Team ID used in Lahman database version 4.5
 % teamIDretro    Team ID used by Retrosheet
 
-source = 'data/Teams.csv';
+source = 'data/lahman/Teams.csv';
 formatString = {'%d', '%C', '%C', '%C', '%C', '%d', '%d', '%d', '%d', ...
     '%d', '%C', '%C', '%C', '%C', '%d', '%d', '%d', '%d', '%d', '%d', ...
     '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%f', '%d', '%d', ...
@@ -273,7 +273,7 @@ Teams = makeTable(source, formatString);
 % SF             Sacrifice flies
 % GIDP           Grounded into double plays
 
-source = 'data/BattingPost.csv';
+source = 'data/lahman/BattingPost.csv';
 formatString = {'%d', '%C', '%q', '%C', '%C', '%d', '%d', '%d', '%d', ...
     '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', ...
     '%d', '%d'};
@@ -314,7 +314,7 @@ BattingPost = makeTable(source, formatString);
 % SF             Sacrifice Flies allowed
 % GIDP           Grounded into Double Plays
 
-source = 'data/PitchingPost.csv';
+source = 'data/lahman/PitchingPost.csv';
 formatString = {'%C', '%d', '%C', '%C', '%C', '%d', '%d', '%d', '%d', ...
     '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%f', '%f', ...
     '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'};
@@ -329,7 +329,7 @@ PitchingPost = makeTable(source, formatString);
 % active         Whetehr team is currently active (Y or N)
 % NAassoc        ID of National Association team franchise played as
 
-source = 'data/TeamsFranchises.csv';
+source = 'data/lahman/TeamsFranchises.csv';
 formatString = {'%C', '%q', '%C', '%C'};
 TeamsFranchises = makeTable(source, formatString);
 
@@ -343,7 +343,7 @@ TeamsFranchises = makeTable(source, formatString);
 % Gcf            Games played in center field
 % Grf            Games played in right field
 
-source = 'data/FieldingOF.csv';
+source = 'data/lahman/FieldingOF.csv';
 formatString = {'%C', '%d', '%d', '%d', '%d', '%d'};
 FieldingOF = makeTable(source, formatString);
 
@@ -364,7 +364,7 @@ FieldingOF = makeTable(source, formatString);
 % L              Losses
 % rank           Team's position in standings for the half
 
-source = 'data/ManagersHalf.csv';
+source = 'data/lahman/ManagersHalf.csv';
 formatString = {'%C', '%d', '%C', '%C', '%d', '%d', '%d', '%d', '%d', '%d'};
 ManagersHalf = makeTable(source, formatString);
 
@@ -383,7 +383,7 @@ ManagersHalf = makeTable(source, formatString);
 % W              Wins
 % L              Losses
 
-source = 'data/TeamsHalf.csv';
+source = 'data/lahman/TeamsHalf.csv';
 formatString = {'%d', '%C', '%C', '%d', '%C', '%C', '%d', '%d', '%d', '%d'};
 TeamsHalf = makeTable(source, formatString);
 
@@ -397,7 +397,7 @@ TeamsHalf = makeTable(source, formatString);
 % playerID       Player ID code
 % salary         Salary
 
-source = 'data/Salaries.csv';
+source = 'data/lahman/Salaries.csv';
 formatString = {'%d', '%C', '%C', '%q', '%f'};
 Salaries = makeTable(source, formatString);
 
@@ -415,7 +415,7 @@ Salaries = makeTable(source, formatString);
 % losses         Losses by team that won the series
 % ties           Tie games
 
-source = 'data/SeriesPost.csv';
+source = 'data/lahman/SeriesPost.csv';
 formatString = {'%d', '%C', '%C', '%C', '%C', '%C', '%d', '%d', '%d'};
 SeriesPost = makeTable(source, formatString);
 
@@ -431,7 +431,7 @@ SeriesPost = makeTable(source, formatString);
 % tie            Award was a tie (Y or N)
 % notes          Notes about the award
 
-source = 'data/AwardsManagers.csv';
+source = 'data/lahman/AwardsManagers.csv';
 formatString = {'%C', '%C', '%d', '%C', '%C', '%C'};
 AwardsManagers = makeTable(source, formatString);
 
@@ -446,7 +446,7 @@ AwardsManagers = makeTable(source, formatString);
 % tie            Award was a tie (Y or N)
 % notes          Notes about the award
 
-source = 'data/AwardsPlayers.csv';
+source = 'data/lahman/AwardsPlayers.csv';
 formatString = {'%C', '%C', '%d', '%C', '%C', '%C'};
 AwardsPlayers = makeTable(source, formatString);
 
@@ -462,7 +462,7 @@ AwardsPlayers = makeTable(source, formatString);
 % pointsMax      Maximum numner of points possible
 % votesFirst     Number of first place votes
 
-source = 'data/AwardsShareManagers.csv';
+source = 'data/lahman/AwardsShareManagers.csv';
 formatString = {'%C', '%d', '%C', '%C', '%d', '%d', '%d'};
 AwardsShareManagers = makeTable(source, formatString);
 
@@ -478,7 +478,7 @@ AwardsShareManagers = makeTable(source, formatString);
 % pointsMax      Maximum numner of points possible
 % votesFirst     Number of first place votes
 
-source = 'data/AwardsSharePlayers.csv';
+source = 'data/lahman/AwardsSharePlayers.csv';
 formatString = {'%C', '%d', '%C', '%C', '%d', '%d', '%d'};
 AwardsSharePlayers = makeTable(source, formatString);
 
@@ -504,7 +504,7 @@ AwardsSharePlayers = makeTable(source, formatString);
 % SB             Stolen Bases allowed (by catcher)
 % CS             Caught Stealing (by catcher)
 
-source = 'data/FieldingPost.csv';
+source = 'data/lahman/FieldingPost.csv';
 formatString = {'%C', '%d', '%C', '%C', '%C', '%C', '%d', '%d', '%d', ...
     '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d'};
 FieldingPost = makeTable(source, formatString);
@@ -533,7 +533,7 @@ FieldingPost = makeTable(source, formatString);
 % G_dh           Games as designated hitter
 % G_ph           Games as pinch hitter
 % G_pr           Games as pinch runner
-source = 'data/Appearances.csv';
+source = 'data/lahman/Appearances.csv';
 formatString = {'%d', '%C', '%C', '%C', '%d', '%d', '%d', '%d', '%d', ...
     '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', ...
     '%d'};
@@ -547,7 +547,7 @@ Appearances = makeTable(source, formatString);
 % schoolState    state where school's city is located
 % schoolNick     nickname for school's baseball team
 
-source = 'data/Schools.csv';
+source = 'data/lahman/Schools.csv';
 formatString = {'%C', '%C', '%C', '%C', '%C'};
 Schools = makeTable(source, formatString);
 
@@ -558,7 +558,7 @@ Schools = makeTable(source, formatString);
 % schoolID       school ID code
 % year           year
 
-source = 'data/CollegePlaying.csv';
+source = 'data/lahman/CollegePlaying.csv';
 formatString = {'%C', '%C', '%d'};
 CollegePlaying = makeTable(source, formatString);
 
@@ -574,4 +574,5 @@ wOBAandFIP = makeTable(source, formatString);
 
 
 %% Save data
-save(stats.mat);
+clearvars source formatString;
+save('stats.mat');
