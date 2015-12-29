@@ -1,6 +1,8 @@
-function [ wOBA ] = calculatewOBA( T, C )
+function [ wOBA ] = calculatewOBA( T )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
+load('stats.mat', 'wOBAandFIP');
+C = wOBAandFIP(wOBAandFIP.Season == T.yearID(1), :);
 wOBA = double((T.BB - T.IBB) * C.wBB + ...
     T.HBP * C.wHBP + ...
     (T.H - T.x2B - T.x3B - T.HR) * C.w1B + ...

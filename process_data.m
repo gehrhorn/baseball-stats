@@ -571,7 +571,7 @@ wOBAandFIP = makeTable(source, formatString);
 
 %% Add Fangraphs SABR (wOBA) hitting stats to the Batting and BattingPost
 % tables
-% wOBAfcn = @(b,c)(calculatewOBA(b,c));
+cawOBAfcn = @(b,c)(calculatewOBA(b,c));
 % [G, TID] = findgroups(Batting.yearID);
 % for i = TID
 % calculatewOBA(Batting(Batting.yearID == i,:), wOBAandFIP(wOBAandFIP.Season == i,:))
