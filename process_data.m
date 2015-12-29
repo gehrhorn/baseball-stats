@@ -66,7 +66,7 @@ formatString = {'%C', '%f', '%f', '%C', '%C', '%d', '%d', '%d', '%d', ...
     '%d', '%d'};
 Batting = makeTable(source, formatString);
 
-% %% Pitching
+%% Pitching
 % 2.3 Pitching table
 % 
 % playerID       Player ID code
@@ -568,6 +568,15 @@ source = 'data/FanGraphs/FanGraphs wOBA and FIP Constants.csv';
 formatString = {'%d', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', ...
     '%f', '%f', '%f', '%f', '%f'};
 wOBAandFIP = makeTable(source, formatString);
+
+%% Add Fangraphs SABR (wOBA) hitting stats to the Batting and BattingPost
+% tables
+% wOBAfcn = @(b,c)(calculatewOBA(b,c));
+% [G, TID] = findgroups(Batting.yearID);
+% for i = TID
+% calculatewOBA(Batting(Batting.yearID == i,:), wOBAandFIP(wOBAandFIP.Season == i,:))
+% end
+
 
 %% Save data (literally save, not baseball save)
 clearvars source formatString;
