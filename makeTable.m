@@ -1,6 +1,6 @@
 function [ T ] = makeTable( stats, formatString )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+%makeTable
+%   Reads data files and adds them to a table
 
 ds = datastore(stats, 'TreatAsMissing', 'NA');
 ds.TextscanFormats = formatString;
