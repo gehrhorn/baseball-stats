@@ -568,16 +568,23 @@ source = 'data/FanGraphs/FanGraphs wOBA and FIP Constants.csv';
 formatString = {'%d', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', ...
     '%f', '%f', '%f', '%f', '%f'};
 wOBAandFIP = makeTable(source, formatString);
+wOBAandFIP.Properties.VariableNames{'Season'} = 'yearID';
+Batting = join(Batting, wOBAandFIP);
+
 
 %% Add Fangraphs SABR (wOBA) hitting stats to the Batting and BattingPost
 % tables
-cawOBAfcn = @(b,c)(calculatewOBA(b,c));
-% [G, TID] = findgroups(Batting.yearID);
-% for i = TID
-% calculatewOBA(Batting(Batting.yearID == i,:), wOBAandFIP(wOBAandFIP.Season == i,:))
-% end
+battingsuccess = Batting.wBB .* double(Batting.BB - Batting.IBB) + Batting.wHBP .* double(Batting.HBP) + ...
+    Batting.w1B .* double(Batting.H - Batting.x2B - Batting.x3B - Batting.HR) + ...
+    Batting.w2B .* double(Batting.x2B) + Batting.w3B .* double(Batting.x3B) + Batting.wHR .* double(Batting.HR);
+battingattempts = double(Batting.AB + Batting.BB - Batting.IBB + Batting.SF + Batting.HBP);
+Batting.wOBA = battingsuccess ./ battingattempts;
+
+clear battingsuccess battingattempts;
+
+% calculate wOBA and lop off the wOBAandFIP vars
 
 
 %% Save data (literally save, not baseball save)
 clearvars source formatString;
-save('stats.mat');
+save('baseballstats.mat');
