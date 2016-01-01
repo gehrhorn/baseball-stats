@@ -572,6 +572,9 @@ wOBAandFIP.Properties.VariableNames{'Season'} = 'yearID';
 Batting = join(Batting, wOBAandFIP);
 BattingPost = join(BattingPost, wOBAandFIP);
 
+Pitching = join(Pitching, wOBAandFIP, 'RightVariables', 'cFIP');
+PitchingPost = join(PitchingPost, wOBAandFIP, 'RightVariables', 'cFIP');
+
 
 %% Add Fangraphs SABR (wOBA) hitting stats to the Batting and BattingPost
 % tables
