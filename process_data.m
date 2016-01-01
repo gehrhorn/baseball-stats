@@ -570,17 +570,14 @@ formatString = {'%d', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', ...
 wOBAandFIP = makeTable(source, formatString);
 wOBAandFIP.Properties.VariableNames{'Season'} = 'yearID';
 Batting = join(Batting, wOBAandFIP);
+BattingPost = join(BattingPost, wOBAandFIP);
 
 
 %% Add Fangraphs SABR (wOBA) hitting stats to the Batting and BattingPost
 % tables
-battingsuccess = Batting.wBB .* double(Batting.BB - Batting.IBB) + Batting.wHBP .* double(Batting.HBP) + ...
-    Batting.w1B .* double(Batting.H - Batting.x2B - Batting.x3B - Batting.HR) + ...
-    Batting.w2B .* double(Batting.x2B) + Batting.w3B .* double(Batting.x3B) + Batting.wHR .* double(Batting.HR);
-battingattempts = double(Batting.AB + Batting.BB - Batting.IBB + Batting.SF + Batting.HBP);
-Batting.wOBA = battingsuccess ./ battingattempts;
+Batting = calculateWOBA(Batting);
+BattingPost = calculateWOBA(BattingPost);
 
-clear battingsuccess battingattempts;
 
 % calculate wOBA and lop off the wOBAandFIP vars
 
