@@ -580,7 +580,8 @@ PitchingPost = join(PitchingPost, wOBAandFIP, 'RightVariables', 'cFIP');
 % tables
 Batting = calculateWOBA(Batting);
 BattingPost = calculateWOBA(BattingPost);
-
+Pitching.FIP = calculateFIP(Pitching);
+PitchingPost.FIP = calculateFIP(PitchingPost);
 
 % calculate wOBA and lop off the wOBAandFIP vars
 
