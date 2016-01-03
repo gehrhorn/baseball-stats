@@ -4,6 +4,9 @@ Scripts to import baseball stats into MATLAB tables. You can use these to do sta
 ## Use
 Run ```process_data``` to import the data into MATLAB tables. 
 
+You can plot interesting data like so
+![Phillies wOBA Plot 2004-2014](https://raw.githubusercontent.com/gehrhorn/baseball-stats/master/images/Phillies%20wOBA.png)
+
 ## License note
 The data files (.csv) are the work of [Sean Lahman](http://www.seanlahman.com/baseball-archive/statistics/) and licensed under the [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0/). 
 
