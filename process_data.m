@@ -33,6 +33,8 @@ formatString = {'%C', '%u8', '%u8', '%u16', '%C', '%C', '%C', '%u8', ...
     '%C', '%C', '%D', '%D', '%C', '%C'};
 
 Master = makeTable(source, formatString);
+Names = Master(:, {'playerID', 'nameFirst', 'nameLast', 'nameGiven'});
+
 
 %% Batting
 
