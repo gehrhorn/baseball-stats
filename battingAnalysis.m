@@ -1,7 +1,4 @@
-% cleanup and load data
-clc;
-clear;
-load('stats.mat', 'Batting');
+load('baseballstats.mat', 'Batting');
 %% 
 % 
 % 
@@ -19,7 +16,9 @@ ax = gca;
 ax.TickDir = 'out';
 ax.YLim = [0 75];
 ax.XLim = [1870 2015];
-
+ax.XLabel.String = 'Year';
+ax.YLabel.String = '# Doubles';
+print('images/doublesovertime.png', '-dpng');
 %% 
 % 
 % 
@@ -28,6 +27,11 @@ ax.XLim = [1870 2015];
 
 figure
 scatter(splitapply(@max, Batting.H, Gyear), splitapply(@max, Batting.x2B, Gyear));
+title('Max Hits vs Max Doubles');
+ax = gca;
+ax.XLabel.String = 'Max Hits';
+ax.YLabel.String = 'Max Doubles';
+print('images/maxhitsvsmaxdoubles.png', '-dpng');
 
 
 %% 
@@ -37,4 +41,19 @@ scatter(splitapply(@max, Batting.H, Gyear), splitapply(@max, Batting.x2B, Gyear)
 
 [Gplayer, players] = findgroups(Batting.playerID);
 [~, idx] = max(splitapply(@sum, Batting.H, Gplayer));
-players(idx)
+getPlayerName(players(idx))
+%% 
+% 
+% 
+% Let's make a boxplot showing offensive stats over the last ten years for 
+% the Phillies.
+
+Phillies = Batting(Batting.teamID == 'PHI' & Batting.yearID >= 2004 & Batting.yearID <= 2015 & Batting.AB >= 200, :);
+figure
+boxplot(Phillies.wOBA, Phillies.yearID);
+title('Phillies wOBA Distribution 2004 - 2014 (Min 200 AB)');
+ax = gca;
+ax.XLabel.String = 'Year';
+ax.YLabel.String = 'wOBA';
+ax.TickDir = 'out';
+print('images/Phillies wOBA.png', '-dpng');
