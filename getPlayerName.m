@@ -1,9 +1,8 @@
-function [ N ] = getPlayerName( T )
+function [ names ] = getPlayerName( T, N )
 %getPlayerName Return data on player names
 
-    load('baseballstats.mat', 'Names');
-    [~, idx] = ismember(T, Names.playerID);
-    N = Names(idx, {'nameFirst' 'nameLast'});
+    [~, idx] = ismember(T, N.playerID);
+    names = N(idx, {'nameFirst' 'nameLast'});
     
 
 end
