@@ -1,7 +1,8 @@
-function [ P ] = calculateFIP( P )
+function [ FIP ] = calculateFIP( P, W )
 %calculateFIP Calculate FIP for pitching
 %   Detailed explanation goes here
-    P = P.cFIP + double(13 * P.HR + 3 * (P.BB + P.HBP) - 2 * P.SO) ./ (double(P.IPouts) / 3);
-
+    T = join(P, W, 'RightVariables', 'cFIP');
+    FIP = T.cFIP + double(13 * T.HR + 3 * (T.BB + P.HBP) - 2 * T.SO) ./ (double(T.IPouts) / 3);
+    
 end
 
