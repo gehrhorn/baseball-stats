@@ -20,3 +20,5 @@ The data files (.csv) are the work of [Sean Lahman](http://www.seanlahman.com/ba
 
 I offer thanks to Sean. Sports statistics are sometimes hard to come by and this is a good resource for baseball and stats geeks alike.
 
+## Note
+I work for MathWorks and we make MATLAB. Zero part of my job is selling MATLAB. I made this because I wanted to play with baseball stats, not to promote MATLAB.
