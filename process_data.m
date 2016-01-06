@@ -584,16 +584,15 @@ PitchingPost.FIP = calculateFIP(PitchingPost, wOBAandFIP);
 Batting.wRAA = calculateWRAA(Batting, wOBAandFIP);
 BattingPost.wRAA = calculateWRAA(BattingPost, wOBAandFIP);
 
+
 %% Add wRC to Batting and BattingPost
 
 Batting.wRC = calculateWRC(Batting, wOBAandFIP);
 BattingPost.wRC = calculateWRC(BattingPost, wOBAandFIP);
 
-%% Add wRC to Batting and BattingPost
 
 
-Batting.wRC = calculateWRC(Batting, wOBAandFIP);
-BattingPost.wRC = calculateWRC(BattingPost, wOBAandFIP);
+
 
 %% Save data (literally save, not baseball save)
 clearvars source formatString;
