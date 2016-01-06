@@ -589,4 +589,5 @@ PitchingPost.FIP = calculateFIP(PitchingPost, wOBAandFIP);
 
 %% Save data (literally save, not baseball save)
 clearvars source formatString;
-save('baseballstats.mat');
+save('baseballstats73.mat', '-v7.3');
+save('baseballstats7.mat', '-v7');
