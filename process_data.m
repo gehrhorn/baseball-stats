@@ -585,6 +585,9 @@ BattingPost.wOBA = calculateWOBA(BattingPost, wOBAandFIP);
 Pitching.FIP = calculateFIP(Pitching, wOBAandFIP);
 PitchingPost.FIP = calculateFIP(PitchingPost, wOBAandFIP);
 
+%% Add wRAA to Batting and Batting Post
+Batting.wRAA = calculateWRAA(Batting, wOBAandFIP);
+BattingPost.wRAA = calculateWRAA(BattingPost, wOBAandFIP);
 
 
 %% Save data (literally save, not baseball save)
