@@ -352,7 +352,6 @@ source = 'data/lahman/FieldingOF.csv';
 formatString = {'%C', '%u16', '%u16', '%u16', '%u16', '%u16'};
 FieldingOF = makeTable(source, formatString);
 
-
 %% ManagersHalf
 % 2.13 ManagersHalf table
 % 
@@ -423,7 +422,6 @@ Salaries = makeTable(source, formatString);
 source = 'data/lahman/SeriesPost.csv';
 formatString = {'%u16', '%C', '%C', '%C', '%C', '%C', '%u16', '%u16', '%u16'};
 SeriesPost = makeTable(source, formatString);
-
 
 %% AwardsManagers
 % 
@@ -575,9 +573,6 @@ formatString = {'%u16', '%f32', '%f32', '%f32', '%f32', '%f32', '%f32', '%f32', 
 wOBAandFIP = makeTable(source, formatString);
 wOBAandFIP.Properties.VariableNames{'Season'} = 'yearID';
 
-
-
-
 %% Add Fangraphs SABR (wOBA) hitting stats to the Batting and BattingPost
 % tables
 Batting.wOBA = calculateWOBA(Batting, wOBAandFIP);
@@ -585,7 +580,14 @@ BattingPost.wOBA = calculateWOBA(BattingPost, wOBAandFIP);
 Pitching.FIP = calculateFIP(Pitching, wOBAandFIP);
 PitchingPost.FIP = calculateFIP(PitchingPost, wOBAandFIP);
 
+%% Add wRAA to Batting and Batting Post
+Batting.wRAA = calculateWRAA(Batting, wOBAandFIP);
+BattingPost.wRAA = calculateWRAA(BattingPost, wOBAandFIP);
 
+%% Add wRC to Batting and BattingPost
+
+Batting.wRC = calculateWRC(Batting, wOBAandFIP);
+BattingPost.wRC = calculateWRC(BattingPost, wOBAandFIP);
 
 %% Save data (literally save, not baseball save)
 clearvars source formatString;
