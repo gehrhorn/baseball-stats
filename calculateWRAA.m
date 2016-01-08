@@ -11,5 +11,7 @@ function [ wRAA ] = calculateWRAA( B, W )
 
 
 
+
+
 end
 
