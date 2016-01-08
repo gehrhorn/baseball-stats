@@ -586,6 +586,7 @@ BattingPost.wRAA = calculateWRAA(BattingPost, wOBAandFIP);
 
 %% Add wRC to Batting and BattingPost
 
+
 Batting.wRC = calculateWRC(Batting, wOBAandFIP);
 BattingPost.wRC = calculateWRC(BattingPost, wOBAandFIP);
 

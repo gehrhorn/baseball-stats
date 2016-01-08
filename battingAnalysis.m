@@ -1,4 +1,4 @@
-load('baseballstats.mat', 'Batting');
+load('baseballstats.mat', 'Batting', 'Names', 'Salaries');
 %% 
 % 
 % 
@@ -19,6 +19,7 @@ ax.XLim = [1870 2015];
 ax.XLabel.String = 'Year';
 ax.YLabel.String = '# Doubles';
 print('images/doublesovertime.png', '-dpng');
+clear ax;
 %% 
 % 
 % 
@@ -27,11 +28,14 @@ print('images/doublesovertime.png', '-dpng');
 
 figure
 scatter(splitapply(@max, Batting.H, Gyear), splitapply(@max, Batting.x2B, Gyear));
-title('Max Hits vs Max Doubles');
+lsline;
+title('Max Hits vs Max Doubles (1871 - 2014)');
 ax = gca;
 ax.XLabel.String = 'Max Hits';
 ax.YLabel.String = 'Max Doubles';
+ax.TickDir = 'out';
 print('images/maxhitsvsmaxdoubles.png', '-dpng');
+clear Gyear ax;
 
 
 %% 
@@ -41,7 +45,8 @@ print('images/maxhitsvsmaxdoubles.png', '-dpng');
 
 [Gplayer, players] = findgroups(Batting.playerID);
 [~, idx] = max(splitapply(@sum, Batting.H, Gplayer));
-getPlayerName(players(idx))
+getPlayerName(players(idx), Names)
+clear Gplayer players idx ans;
 %% 
 % 
 % 
@@ -55,5 +60,27 @@ title('Phillies wOBA Distribution 2004 - 2014 (Min 200 AB)');
 ax = gca;
 ax.XLabel.String = 'Year';
 ax.YLabel.String = 'wOBA';
+ax.YAxis.TickLabelFormat = '%.3f';
 ax.TickDir = 'out';
 print('images/Phillies wOBA.png', '-dpng');
+clear ax;
+%% 
+% 
+% 
+% 
+% 
+% Let's check out offensive statistic performance against salaries.
+
+wRC = Batting(Batting.yearID == 2014 & Batting.AB >= 400,{'playerID', 'wRC'});
+salary2014 = Salaries(Salaries.yearID == 2014, {'playerID', 'salary'});
+S = outerjoin(wRC, salary2014);
+S = S(~isundefined(S.playerID_wRC) & ~isundefined(S.playerID_salary2014),:);
+figure;
+scatter(single(S.salary) / 1000 , S.wRC);
+lsline;
+ax = gca;
+ax.XLabel.String = 'Salary ($1,000s)';
+ax.YLabel.String = 'wRC (min 400 AB)';
+ax.XAxis.TickLabelFormat = '$%,g';
+ax.TickDir = 'out';
+clear clear ax mu S wRC salary2014;
