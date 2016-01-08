@@ -4,7 +4,7 @@ function [ wRAA ] = calculateWRAA( B, W )
     W.Properties.VariableNames{'wOBA'} = 'lgWOBA';
     T = join(B, W, 'RightVariables', {'lgWOBA', 'wOBAScale'});
     wRAA = ((T.wOBA - T.lgWOBA) ./ T.wOBAScale) .* ...
-        double(T.AB + T.BB + T.HBP + T.SH + T.SF);
+        double(calculatePA(T));
 
 end
 

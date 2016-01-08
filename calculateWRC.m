@@ -4,7 +4,7 @@ function [ wRC ] = calculateWRC( B, W )
 W.Properties.VariableNames{'wOBA'} = 'lgWOBA';
 T = join(B, W, 'RightVariables', {'lgWOBA', 'wOBAScale', 'R_PA'});
 wRC = (((T.wOBA - T.lgWOBA) ./ T.wOBAScale)+T.R_PA) .* ...
-    double(T.AB + T.BB + T.HBP + T.SH + T.SF);
+    double(calculatePA(T));
 
 end
 
