@@ -1,5 +1,5 @@
 # baseball-stats
-Scripts to import baseball stats into MATLAB tables. You can use these to do statistical analysis on baseball performance.
+Scripts to import baseball statistics into MATLAB. You can use these to do statistical analysis on baseball performance.
 
 ## Use
 Run ```process_data``` to import the data into MATLAB tables. 
