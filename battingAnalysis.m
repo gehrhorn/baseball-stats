@@ -62,7 +62,7 @@ clear ax;
 % Let's check out offensive statistic performance against salaries.
 
 wRC = Batting(Batting.yearID == 2015 & Batting.AB >= 400,{'playerID', 'wRC'});
-salary = Salaries(Salaries.yearID == 2014, {'playerID', 'salary'});
+salary = Salaries(Salaries.yearID == 2015, {'playerID', 'salary'});
 S = outerjoin(wRC, salary);
 S = S(~isundefined(S.playerID_wRC) & ~isundefined(S.playerID_salary),:);
 figure;
@@ -71,7 +71,7 @@ title('2015 wRC vs. 2015 Salary (Min 400 AB)');
 lsline;
 ax = gca;
 ax.XLabel.String = 'Salary ($1,000s)';
-ax.YLabel.String = 'wRC (min 400 AB)';
+ax.YLabel.String = 'wRC';
 ax.XAxis.TickLabelFormat = '$%,g';
 ax.TickDir = 'out';
 clear clear ax mu S wRC salary2014;
